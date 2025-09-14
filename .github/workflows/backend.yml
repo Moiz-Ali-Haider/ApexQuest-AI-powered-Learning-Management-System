@@ -3,9 +3,13 @@
 name: CI/CD - Backend
 
 # This workflow runs on any push to the 'main' branch
+# .github/workflows/backend.yml
 on:
   push:
     branches: ["main"]
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend.yml"
 
 jobs:
   build-push-and-deploy:

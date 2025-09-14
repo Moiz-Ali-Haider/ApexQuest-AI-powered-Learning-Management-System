@@ -4,9 +4,13 @@
 name: CI/CD - Frontend
 
 # This pipeline is also triggered by a push to the 'main' branch
+# .github/workflows/frontend.yml
 on:
   push:
     branches: ["main"]
+    paths:
+      - "frontend/**"
+      - ".github/workflows/frontend.yml"
 
 jobs:
   build-push-and-deploy:
