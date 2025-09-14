@@ -30,11 +30,11 @@ export const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 function App() {
   let { userData } = useSelector((state) => state.user);
-
   getCurrentUser();
   getCouseData();
   getCreatorCourseData();
   getAllReviews();
+
   return (
     <>
       <ToastContainer />
