@@ -1,12 +1,54 @@
-# React + Vite
+# ApexQuest: Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for ApexQuest, a modern Learning Management System. It's built with React.js and utilizes a suite of modern technologies to create a fast, responsive, and user-friendly experience.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **Component-Based Architecture:** Built with reusable and maintainable React components.
+* **State Management with Redux:** Centralized and predictable state management using Redux Toolkit for user data, courses, and lectures.
+* **Responsive Design:** A mobile-first approach using Tailwind CSS to ensure a great experience on all devices.
+* **Routing:** Client-side routing with React Router for a seamless single-page application (SPA) experience.
+* **Custom Hooks:** Custom hooks for fetching and managing data, promoting code reuse and separation of concerns.
 
-## Expanding the ESLint configuration
+##🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **React.js:** A JavaScript library for building user interfaces.
+* **Redux Toolkit:** For predictable state management.
+* **React Router:** For declarative routing in your React application.
+* **Axios:** For making HTTP requests to the backend.
+* **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
+* **Firebase:** For Google OAuth authentication.
+* **React Icons:** For including popular icons in your project.
+* **React Toastify:** For displaying notifications to the user.
+* **React Spinners:** For loading indicators.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+* Node.js
+* npm (or yarn)
+
+### Installation
+
+1.  **Clone the repository (if you haven't already):**
+    ```sh
+    git clone [https://github.com/your-username/ApexQuest-A-LMS-Website.git](https://github.com/your-username/ApexQuest-A-LMS-Website.git)
+    ```
+2.  **Navigate to the frontend directory:**
+    ```sh
+    cd ApexQuest-A-LMS-Website-main/frontend
+    ```
+3.  **Install dependencies:**
+    ```sh
+    npm install
+    ```
+
+### Configuration
+
+Create a `.env` file in the `frontend` directory and add the following environment variables:
+
+```env
+VITE_SERVER_URL=http://localhost:5000 # Your backend server URL
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+
