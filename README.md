@@ -1,115 +1,132 @@
-# ApexQuest: A Feature-Rich Learning Management System
+# ApexQuest: An AI-Powered, Cloud-Native Learning Management System
 
-![ApexQuest Logo](frontend/src/assets/logo.png)
+![CI/CD - Backend](https://github.com/AmarNarayanDwivedi/ApexQuest-AI-powered-Learning-Management-System/actions/workflows/backend.yml/badge.svg)
+![CI/CD - Frontend](https://github.com/AmarNarayanDwivedi/ApexQuest-AI-powered-Learning-Management-System/actions/workflows/frontend.yml/badge.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
-**Live Demo:** https://apexquest-a-lms-website-1.onrender.com
+An intelligent, full-stack Learning Management System (LMS) designed from the ground up with a modern, cloud-native architecture. ApexQuest leverages AI to enhance the learning experience and is built on a fully automated CI/CD pipeline for rapid, reliable deployments.
 
-ApexQuest is a modern, **AI-enhanced** Learning Management System (LMS) built to provide an intelligent and interactive learning experience. This full-stack MERN application features a powerful **AI-powered search assistant**, alongside robust functionalities like secure payments with Razorpay, complete course and lecture management, and seamless user authentication with Google OAuth.
+### ✨ **Live Demo**
 
-## 🌟 Key Features
+**Check out the live application hosted on Render:** **[https://apexquest-a-lms-website-1.onrender.com](https://apexquest-a-lms-website-1.onrender.com)**
 
-* **🤖 AI-Powered Course Search:** The standout feature of ApexQuest. An intelligent assistant helps students discover the perfect course by understanding natural language queries, making course discovery intuitive and efficient.
+---
 
-* **💳 Secure Payment Gateway:** Fully integrated with Razorpay to handle course purchases securely, providing a seamless and trustworthy transaction process for students.
+## 🚀 Key Features
 
-* **🔐 Comprehensive User Authentication:** Secure signup/login with email and password, plus Google OAuth for one-click access. Includes a robust OTP-based password reset system.
+* **User Authentication:** Secure JWT-based authentication with signup, login, and forgot password functionality.
+* **Comprehensive Course Management (for Educators):**
+    * Full CRUD (Create, Read, Update, Delete) operations for courses.
+    * Dynamic lecture management (add, edit, and reorder video lectures).
+    * Rich content uploading via Cloudinary integration.
+* **Interactive Student Experience:**
+    * Seamless course enrollment and progress tracking.
+    * Integrated Razorpay payment gateway for course purchases.
+* **AI-Powered Course Assistant:**
+    * Leverages the Gemini API to provide intelligent answers to student questions based on course content.
+    * Enhances learning through an interactive Q&A interface.
+* **User Profile Management:** Users can view and update their profiles, including uploading a profile picture.
 
-* **📚 Full Course & Lecture Management:** A dedicated dashboard for educators to create, update, and manage their courses and video lectures with ease.
+---
 
-* **👤 Personalized Student Dashboards:** Allows students to view their enrolled courses, track their progress, and manage their profiles.
+## 🛠️ Tech Stack & Architecture
 
-## 🎥 Project Demo
+This project is built with a modern MERN stack and is fully containerized with Docker for consistency across all environments. It follows a microservices-inspired architecture with a separate frontend and backend.
 
-*(It is highly recommended to add a GIF or a short video demonstrating your application here, especially the AI search feature.)*
+| Category    | Technologies & Tools                                            |
+|-------------|-----------------------------------------------------------------|
+| **Frontend**| React.js (Vite), Redux Toolkit, Axios                           |
+| **Backend** | Node.js, Express.js                                             |
+| **Database**| MongoDB (with Mongoose)                                         |
+| **DevOps** | **Docker, Docker Compose, Nginx, GitHub Actions, Render, Docker Hub** |
+| **Services**| Cloudinary (Media), Razorpay (Payments), Gemini API (AI)          |
 
-![ApexQuest AI Demo GIF](link-to-your-demo.gif)
+### System Architecture
 
-## 🛠️ Tech Stack
+The application is architected for scalability and automation, leveraging a full CI/CD pipeline.
 
-### Frontend:
-* **React.js:** A JavaScript library for building user interfaces.
-* **Redux Toolkit:** For predictable state management.
-* **React Router:** For declarative routing in your React application.
-* **Axios:** For making HTTP requests to the backend.
-* **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
-* **Firebase:** For Google OAuth authentication.
+```
++-----------+       +-----------------+       +-------------------+       +----------------------+       +----------------+
+| Developer | ----> |  git push main  | ----> |  GitHub Actions   | ----> |  Build & Push Image  | ----> |   Docker Hub   |
++-----------+       +-----------------+       +-------------------+       +----------------------+       +----------------+
+      ^                                             | (CI/CD)                                                |
+      |                                             |                                                        | (Pulls Image)
+      |                                             V                                                        V
+      |                                   +-------------------+                             +-------------------------+
+      +-----------------------------------|  Automated Tests  |                             |  Render Cloud Hosting   |
+                                          +-------------------+                             +-------------------------+
+                                                                                                  | (Frontend & Backend)
+                                                                                                  V
+                                                                                            +-----------+
+                                                                                            | End User  |
+                                                                                            +-----------+
 
-### Backend:
-* **Node.js:** A JavaScript runtime for building server-side applications.
-* **Express.js:** A fast and minimalist web framework for Node.js.
-* **MongoDB:** A NoSQL database for storing application data.
-* **Mongoose:** An ODM for modeling and managing data in MongoDB.
-* **JWT (JSON Web Tokens):** For secure user authentication and authorization.
-* **Bcrypt.js:** For hashing user passwords.
-* **Cloudinary:** For storing and managing user-uploaded images and videos.
-* **Nodemailer:** For sending emails (e.g., OTP for password reset).
-* **Razorpay:** For processing payments.
+```
+---
 
-## 🚀 Getting Started
+## ⚙️ DevOps & CI/CD Workflow
 
-To get a local copy up and running, follow these simple steps.
+This project is built with a **fully automated Continuous Integration and Continuous Deployment (CI/CD) pipeline** using GitHub Actions, a cornerstone of modern DevOps practices.
+
+1.  **Trigger:** Any `git push` to the `main` branch automatically triggers the pipeline.
+2.  **Path Filtering:** The pipeline is intelligent; it only builds and deploys the service (frontend or backend) that had code changes, saving time and resources.
+3.  **Build:** A job runs on a fresh Ubuntu virtual machine, checks out the code, and builds a production-ready Docker image using multi-stage builds for minimal size and enhanced security.
+4.  **Push:** The newly built image is pushed and tagged on Docker Hub, creating a versioned, portable artifact of the application.
+5.  **Deploy:** The pipeline sends a webhook request to Render, which triggers an immediate, zero-downtime deployment by pulling the new image from Docker Hub and restarting the service.
+
+This end-to-end automation ensures rapid, reliable, and consistent deployments, allowing for a focus on feature development rather than manual release management.
+
+---
+
+## 📦 Getting Started (Local Development)
+
+To run this project on your local machine, please follow these steps.
 
 ### Prerequisites
 
-* Node.js
-* npm (or yarn)
-* MongoDB
+* Node.js (v18 or later)
+* Docker & Docker Compose
+* A Git client
 
-### Installation
+### Installation & Setup
 
 1.  **Clone the repository:**
-    ```sh
-    git clone [https://github.com/your-username/ApexQuest-A-LMS-Website.git](https://github.com/your-username/ApexQuest-A-LMS-Website.git)
-    ```
-2.  **Navigate to the project directory:**
-    ```sh
-    cd ApexQuest-A-LMS-Website-main
-    ```
-3.  **Install backend dependencies:**
-    ```sh
-    cd backend
-    npm install
-    ```
-4.  **Install frontend dependencies:**
-    ```sh
-    cd ../frontend
-    npm install
+    ```bash
+    git clone [https://github.com/AmarNarayanDwivedi/ApexQuest-AI-powered-Learning-Management-System.git](https://github.com/AmarNarayanDwivedi/ApexQuest-AI-powered-Learning-Management-System.git)
+    cd ApexQuest-AI-powered-Learning-Management-System
     ```
 
-### Configuration
+2.  **Configure Environment Variables:**
+    Create two `.env` files based on the provided templates.
+    * Create a file at `./backend/.env` and fill in the values from `./backend/.env.example`.
+    * Create a file at the root `./.env` for frontend build arguments (see the root `.env.example` in the repo). For local development, `VITE_SERVER_URL` should be `http://localhost:8000`.
 
-1.  **Backend Environment Variables:** Create a `.env` file in the `backend` directory and add the following:
-    ```env
-    PORT=5000
-    MONGO_URI=your_mongodb_connection_string
-    JWT_SECRET=your_jwt_secret
-    CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-    CLOUDINARY_API_KEY=your_cloudinary_api_key
-    CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-    SMTP_HOST=your_smtp_host
-    SMTP_PORT=your_smtp_port
-    SMTP_USER=your_smtp_user
-    SMTP_PASS=your_smtp_password
-    RAZORPAY_KEY_ID=your_razorpay_key_id
-    RAZORPAY_KEY_SECRET=your_razorpay_key_secret
-    ```
-2.  **Frontend Environment Variables:** Create a `.env` file in the `frontend` directory and add your backend server URL:
-    ```env
-    VITE_SERVER_URL=http://localhost:5000
+3.  **Build and Run the Application with Docker Compose:**
+    ```bash
+    # This command will build the Docker images and start the containers in the background.
+    docker-compose up --build -d
     ```
 
-### Running the Application
+4.  **Access the Application:**
+    * Frontend is available at: `http://localhost:5173`
+    * Backend API is available at: `http://localhost:8000`
 
-1.  **Start the backend server:**
-    ```sh
-    cd backend
-    npm start
-    ```
-2.  **Start the frontend development server:**
-    ```sh
-    cd ../frontend
-    npm run dev
-    ```
+---
 
-Open [http://localhost:5173](http://localhost:5173) (or whatever port your terminal indicates) to view it in the browser.
-Open [http://localhost:5173](http://localhost:5173) (or whatever port your terminal indicates) to view it in the browser.
+## 🔮 Future Improvements
+
+- [ ] Implement a staging environment for pre-production testing.
+- [ ] Increase test coverage with E2E tests using Cypress.
+- [ ] Integrate a WebSocket layer for real-time notifications.
+- [ ] Explore deployment on Kubernetes (K8s) for advanced orchestration.
+
+---
+
+## 👨‍💻 Contact
+
+Amar Narayan Dwivedi - amardwivedi792@gmail.com
+
+Project Link: [https://github.com/AmarNarayanDwivedi/ApexQuest-AI-powered-Learning-Management-System](https://github.com/AmarNarayanDwivedi/ApexQuest-AI-powered-Learning-Management-System)
