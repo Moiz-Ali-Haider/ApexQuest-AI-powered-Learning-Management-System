@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    image: amarnarayandwivedi/apexquest-backend:latest
+    container_name: apexquest-backend
+    ports:
+      # Maps port 8000 on the host machine to port 5000 inside the container.
+      - "8000:5000"
+    env_file:
+      - ./.env
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # This section correctly reads variables from the root .env file
+        # and passes them as build arguments to the frontend Dockerfile.
+        - VITE_FIREBASE_APIKEY=${VITE_FIREBASE_APIKEY}
+        - VITE_SERVER_URL=${VITE_SERVER_URL}
+    image: amarnarayandwivedi/apexquest-frontend:latest
+    container_name: apexquest-frontend
+
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
