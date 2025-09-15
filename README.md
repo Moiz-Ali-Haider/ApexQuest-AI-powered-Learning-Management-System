@@ -12,6 +12,8 @@ An intelligent, full-stack Learning Management System (LMS) designed from the gr
 ### ✨ **Live Demo**
 
 **Check out the live application hosted on Render:** **[https://apexquest-a-lms-website-1.onrender.com](https://apexquest-a-lms-website-1.onrender.com)**
+[![ApexQuest Demo Video](<img width="1888" height="946" alt="image" src="https://github.com/user-attachments/assets/ed279db7-d443-4351-801c-496d39c241b6" />
+)](https://drive.google.com/file/d/1HnOinxAZ5ZBMK5p7Xf4JAcFrOFFayks2/view?usp=sharing)
 
 ---
 
